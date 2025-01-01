@@ -23,7 +23,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = "dark",
+  defaultTheme = "light",
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -31,7 +31,7 @@ export function ThemeProvider({
     if (typeof window !== "undefined" && window.localStorage) {
       return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
     }
-    return defaultTheme; // Fallback to default theme if not in the browser
+    return defaultTheme;
   });
 
   useEffect(() => {
